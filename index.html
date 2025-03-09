@@ -19,10 +19,15 @@
             color: white;
             padding: 15px;
             text-align: center;
+            position: relative;
+        }
+        nav {
+            display: inline-block;
         }
         nav ul {
             list-style: none;
             padding: 0;
+            display: inline;
         }
         nav ul li {
             display: inline;
@@ -33,50 +38,99 @@
             text-decoration: none;
         }
 
-        /* Sections */
+        /* Search Bar */
+        .search-box {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+        .search-box input {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+        .search-box button {
+            padding: 5px;
+            background: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Main Sections */
         section {
             padding: 50px;
             text-align: center;
+            position: relative;
         }
-        #home {
-            background: #f4f4f4;
-            padding: 100px 20px;
+
+        /* Image Slider */
+        .slider {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            width: 200px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 10px;
         }
+        .slider img {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        .slider img.active {
+            display: block;
+        }
+
+        /* Google Map */
+        .map {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 250px;
+            height: 200px;
+        }
+
+        /* Calendar */
+        .calendar {
+            margin: 20px auto;
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Call to Action */
         .cta-btn {
             background: #004aad;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        /* Contact Form */
-        form {
-            max-width: 400px;
+            display: block;
             margin: 20px auto;
-            display: flex;
-            flex-direction: column;
-        }
-        input, textarea {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-        button {
-            background: #004aad;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
+            width: 200px;
+            text-align: center;
+            border-radius: 5px;
         }
 
         /* Footer */
         footer {
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
             padding: 20px;
             background: #004aad;
             color: white;
+        }
+        .privacy-policy {
+            text-align: left;
+        }
+        .social-icons {
+            text-align: right;
+        }
+        .social-icons a {
+            margin-left: 10px;
+            color: white;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -95,6 +149,11 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <!-- Search Bar -->
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Search...">
+            <button onclick="searchFunction()">🔍</button>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -102,63 +161,78 @@
         <h2>Welcome to My Official Website</h2>
         <p>Cabinet Secretary, District 325D | Leader | Community Developer</p>
         <a href="#contact" class="cta-btn">Get in Touch</a>
+
+        <!-- Image Slider -->
+        <div class="slider">
+            <img src="image1.jpg" class="active" alt="Slide 1">
+            <img src="image2.jpg" alt="Slide 2">
+            <img src="image3.jpg" alt="Slide 3">
+        </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Dedicated leader serving as the Cabinet Secretary for District 325D, committed to service, leadership, and community welfare.</p>
-    </section>
+    <!-- Sections -->
+    <section id="about"><h2>About Me</h2></section>
+    <section id="leadership"><h2>Leadership & Experience</h2></section>
+    <section id="projects"><h2>Community Projects</h2></section>
+    <section id="blog"><h2>Blog & Insights</h2></section>
 
-    <!-- Leadership Section -->
-    <section id="leadership">
-        <h2>Leadership & Experience</h2>
-        <p>Leading community projects and administrative roles within Lions Clubs International.</p>
-    </section>
+    <!-- Calendar -->
+    <div class="calendar">
+        <h3>Event Calendar</h3>
+        <p>Upcoming Events: Leadership Seminar - March 20</p>
+    </div>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Community Projects</h2>
-        <p>Involved in various social initiatives focusing on education, health, and community service.</p>
-    </section>
+    <!-- Google Map -->
+    <iframe class="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.3140990305715!2d85.31232951506188!3d27.709031582791193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1931d25b45eb%3A0x76f2efdbd3b0aa2d!2sKathmandu!5e0!3m2!1sen!2snp!4v1645115234526"
+        width="250" height="200" allowfullscreen="" loading="lazy">
+    </iframe>
 
-    <!-- Blog Section -->
-    <section id="blog">
-        <h2>Blog & Insights</h2>
-        <p>Sharing leadership lessons and Lions Club updates.</p>
-    </section>
+    <!-- Call to Action -->
+    <a href="#contact" class="cta-btn">Join the Movement</a>
 
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
-        <form id="contact-form">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" placeholder="Your Message" required></textarea>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
             <button type="submit">Send Message</button>
         </form>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Rajendra Dulal | All Rights Reserved</p>
+        <div class="privacy-policy">
+            <h4>Privacy Policy</h4>
+            <p>Your data is safe with us.</p>
+        </div>
+        <div class="social-icons">
+            <h4>Follow Me</h4>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+        </div>
     </footer>
 
     <script>
-        document.getElementById("contact-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
-            let message = document.getElementById("message").value;
-            
-            if (name && email && message) {
-                alert("Thank you, " + name + "! Your message has been received.");
-                document.getElementById("contact-form").reset();
-            } else {
-                alert("Please fill out all fields.");
-            }
-        });
+        // Search Function
+        function searchFunction() {
+            let query = document.getElementById("search").value;
+            alert("Searching for: " + query);
+        }
+
+        // Image Slider
+        let slides = document.querySelectorAll(".slider img");
+        let index = 0;
+
+        function showSlides() {
+            slides.forEach(img => img.classList.remove("active"));
+            index = (index + 1) % slides.length;
+            slides[index].classList.add("active");
+        }
+        setInterval(showSlides, 3000);
     </script>
 
 </body>
